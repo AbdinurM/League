@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-danger navbar-dark py-3 fixed-top">
+    <div class="container">
+        <a href="/Home" class="navbar-brand">MYA League Website</a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="Team" class="nav-link">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Player" class="nav-link">Player</a>
+                </li>
+                <li class="nav-item">
+                    <a href="showNewTeamForm" class="nav-link">SignUp</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Welcome part -->
+<section
+        class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+>
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div><br>
+                <h1><span class="text-light">Welcome To</span> <span class="text-danger"> MYA League Website </span></h1>
+                <p class="lead my-4">
+                    Minnesota Youth Assoicastion is a Non-Profit org that helps the youth withen our community,
+                    and what's the best way to get the youth invovle <span class="text-danger">SPORTS!</span>
+
+                </p>
+                <button
+                        class="btn btn-danger btn-lg"
+                        data-bs-toggle="modal"
+                        data-bs-target="#enroll"
+                >
+                    SIGN YOUR TEAM UP TODAY
+                </button>
+            </div>
+            <img
+                    class="img-fluid w-50 d-none d-sm-block"
+                    src="img/showcase.svg"
+                    alt=""
+            />
+        </div>
+    </div>
+</section>
+
+<!-- spots -->
+<section class="bg-dark text-light p-5">
+    <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center">
+            <h3 class="mb-3 mb-md-0">Spots are limited so dont wait and miss out!</h3>
+
+
+        </div>
+    </div>
+</section>
+<div class="container text-right">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+<br><br><br><br><br>
+<div class="container">
+    <h1>Update Team Info</h1>
+    <hr>
+    <h2>Update Team</h2>
+
+    <form action="#" th:action="@{/addTeam}" th:object="${team}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{teamId}" />
+
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{color}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{Wins}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{Lose}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Update Team</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/Team}"> Back to Team</a>
+</div>
+<br><br><br>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer class="p-5 bg-danger text-white text-center position-relative">
+    <div class="container">
+        <p class="lead">Sign up today!  MYA(Minnesota Youth Assoicastion)</p>
+        <div class="container text-right">
+            <div>
+                <form th:action="@{/logout}" method="post">
+                    <p>
+                        Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    </p>
+                    <input type="submit" value="Sign Out" />
+                </form>
+            </div>
+
+        <a href="#" class="position-absolute bottom-0 end-0 p-5">
+            <i class="bi bi-arrow-up-circle h1"></i>
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script></body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+<!-- nav -->
+<nav class="navbar navbar-expand-lg bg-danger navbar-dark py-3 fixed-top">
+  <div class="container">
+    <a href="/Home" class="navbar-brand">MYA League Website</a>
+
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navmenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="Team" class="nav-link">Team</a>
+        </li>
+        <li class="nav-item">
+          <a href="Player" class="nav-link">Player</a>
+        </li>
+        <li class="nav-item">
+          <a href="login" class="nav-link">UpdateTeam</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Welcome part -->
+<section
+        class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+>
+  <div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between">
+      <div><br>
+        <h1><span class="text-light">Welcome To</span> <span class="text-danger"> MYA League Website </span></h1>
+        <p class="lead my-4">
+          Minnesota Youth Assoicastion is a Non-Profit org that helps the youth withen our community,
+          and what's the best way to get the youth invovle <span class="text-danger">SPORTS!</span>
+
+        </p>
+        <a href="/showNewTeamForm" class="nav-link"> <button
+                class="btn btn-danger btn-lg"
+                data-bs-toggle="modal"
+                data-bs-target="#enroll"
+        >
+          Register Your Team Here!!
+        </button>
+        </a></div>
+      <img
+              class="img-fluid w-50 d-none d-sm-block"
+              src="img/showcase.svg"
+              alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<!-- spots -->
+<section class="bg-dark text-light p-5">
+  <div class="container">
+    <div class="d-md-flex justify-content-between align-items-center">
+      <h3 class="mb-3 mb-md-0">Spots are limited so dont wait and miss out!</h3>
+
+
+    </div>
+  </div>
+</section>
+
+<div class="container text-right">
+  <div>
+    <form th:action="@{/logout}" method="post">
+      <p>
+        Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+      </p>
+      <input type="submit" value="Sign Out" />
+    </form>
+  </div>
+  <div>
+    <h1>List of Users</h1>
+  </div>
+
+  <div>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>User ID</th>
+        <th>E-mail</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user: ${listUsers}">
+        <td th:text="${user.id}">User ID</td>
+        <td th:text="${user.email}">E-mail</td>
+        <td th:text="${user.firstName}">First Name</td>
+        <td th:text="${user.lastName}">Last Name</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
+</body>
+</html>
