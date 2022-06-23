@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.BBall.League.Repository;
+package com.AbdinurMuse.League.Repository;
 
 /**
  *
  * @author Nur
  */
-public class TeamException extends Exception{
-	public TeamException(String message) {
+public class LeagueException extends Exception{
+	public LeagueException(String message) {
 		super(message);
 	}
-public TeamException(String message, Throwable cause) {
+public LeagueException(String message, Throwable cause) {
 	super(message, cause);
 }
 }
+// expection error

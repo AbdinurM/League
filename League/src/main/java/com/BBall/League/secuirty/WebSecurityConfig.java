@@ -1,4 +1,4 @@
-package com.BBall.League.secuirty;
+package com.AbdinurMuse.League.secuirty;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,15 +49,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/users","/TeamId","/updateTeam","/updatePlayer","/showNewTeamForm","/showNewPlayerForm","/deletePlayer","/deleteTeam").authenticated()
+                .antMatchers("/users","/TeamId","/updateTeam","/updatePlayer","/showNewTeamForm","/showNewPlayerForm","/deletePlayer","/deleteTeam","/Home","/playerid").authenticated()//all pages that needs a loging to access
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .usernameParameter("email")
-                .defaultSuccessUrl("/Home")
+                .usernameParameter("email")//username is email
+                .defaultSuccessUrl("/Home")//home page when you log in
                 .permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/").permitAll();
+                .logout().logoutSuccessUrl("/").permitAll();//page that you are brought to after loging out
     }
 }
 

@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.BBall.League.models;
+package com.AbdinurMuse.League.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * @author Nur
@@ -26,14 +29,16 @@ public class Team {
     private int Wins;
     @Column(name = "Teamlose")
     private int Lose;
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Team_Player",
-            joinColumns = @JoinColumn(
-                    name = "teamid", referencedColumnName = "teamid"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "name", referencedColumnName = "name"))
-    private Collection <Player> player;
+    //creates columns
+
+ // @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@JoinTable(
+      //      name = "Team_Player",
+        //    joinColumns = @JoinColumn(
+          //          name = "teamid", referencedColumnName = "teamid"),
+           // inverseJoinColumns = @JoinColumn(
+             //       name = "name", referencedColumnName = "name"))
+  //  private List<Player> teamplayer = new ArrayList<>();
 
     public Team() {
 
@@ -46,7 +51,7 @@ public class Team {
         this.color = color;
         this.Wins = Wins;
         this.Lose = Lose;
-    }
+    }//assiging var
 
     public int getTeamId() {
         return teamId;
@@ -87,12 +92,5 @@ public class Team {
     public void setLose(int lose) {
         Lose = lose;
     }
-
- //   public Collection<Player> getPlayer() {
-        //return player;
- //   }
-
-  //  public void setPlayer(Collection<Player> player) {
-     //   this.player = player;
-  //  }
+//setters and getters
 }

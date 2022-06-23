@@ -1,8 +1,8 @@
-package com.BBall.League.Service;
+package com.AbdinurMuse.League.Service;
 
-import com.BBall.League.Repository.TeamException;
-import com.BBall.League.Repository.TeamRepository;
-import com.BBall.League.models.Team;
+import com.AbdinurMuse.League.Repository.LeagueException;
+import com.AbdinurMuse.League.Repository.TeamRepository;
+import com.AbdinurMuse.League.models.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +14,17 @@ public class TeamServiceImpl implements TeamService {
     @Autowired
     private TeamRepository teamRepository;
     @Override
-    public void addTeam(Team newTeam) throws TeamException {
+    public void addTeam(Team newTeam) throws LeagueException {
         this.teamRepository.save(newTeam);
     }
 
     @Override
-    public List<Team> getAllTeams() throws TeamException {
+    public List<Team> getAllTeams() throws LeagueException {
         return teamRepository.findAll();
     }
 
     @Override
-    public Team getTeam(int teamId) throws TeamException {
+    public Team getTeam(int teamId) throws LeagueException {
         Optional<Team> optional = teamRepository.findById(teamId);
         Team team = null;
         if (optional.isPresent()) {
@@ -36,19 +36,19 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public void deleteTeamByTeamId(int teamId) throws TeamException {
+    public void deleteTeamByTeamId(int teamId) throws LeagueException {
     this.teamRepository.deleteById(teamId);
     }
 
     @Override
-    public Team updateTeam(Team updateTeam) throws TeamException {
+    public Team updateTeam(Team updateTeam) throws LeagueException {
         return null;
     }
 
-   // @Override
-    //public Team getTeamPlayer(int teamId) throws TeamException {
-      //  return teamRepository.findAllByteamId(teamId);
-    //}
+ //   @Override
+  //  public List<Player> findbyteamid(int teamId) throws TeamException {
+ //       return findbyteamid(teamId);
+  //  }
 
 
 }

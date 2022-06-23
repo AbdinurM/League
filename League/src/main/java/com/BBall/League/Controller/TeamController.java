@@ -1,9 +1,8 @@
-package com.BBall.League.Controller;
+package com.AbdinurMuse.League.Controller;
 
-import com.BBall.League.Repository.TeamException;
-import com.BBall.League.Service.TeamService;
-import com.BBall.League.models.Player;
-import com.BBall.League.models.Team;
+import com.AbdinurMuse.League.Repository.LeagueException;
+import com.AbdinurMuse.League.Service.TeamService;
+import com.AbdinurMuse.League.models.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,26 +15,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class TeamController {
     @Autowired
     private TeamService teamService;
-    @GetMapping("/Team")//list team info likename/color/etc
-    public String viewHomePage(Model model) throws TeamException {
+    @GetMapping("/Team")//list all team name and color
+    public String viewHomePage(Model model) throws LeagueException {
         model.addAttribute("ListTeam", teamService.getAllTeams());
         return "Team";
     }
-    @GetMapping("TeamId")//list team id and name only!
-    public String teamid(Model model) throws TeamException {
+    @GetMapping("TeamId")//management page where you can update team or remove
+    public String teamid(Model model) throws LeagueException {
         model.addAttribute("ListTeam", teamService.getAllTeams());
-        return "teamid";
+        return "TeamId";
     }
-    @GetMapping("/Standings")//list team standings
-    public String teamrecord(Model model) throws TeamException {
+    @GetMapping("/Standings")//list team record
+    public String teamrecord(Model model) throws LeagueException {
         model.addAttribute("ListTeam", teamService.getAllTeams());
         return "teamrecord";
     }
+
     @GetMapping("/getTeamPlayer/{teamId}")//get one team and its players
-    public String getTeamPlayer(@PathVariable(value = "teamId") int teamId, Model model) throws TeamException {
+    public String getTeamPlayer(@PathVariable(value = "teamId") int teamId, Model model) throws LeagueException {
         Team team = teamService.getTeam(teamId);
         model.addAttribute("team", team);
-        return "Team";
+        return "teamplayer";
     }
         @GetMapping("/showNewTeamForm")//sign up team
     public String showNewTeamForm(Model model) {
@@ -44,16 +44,15 @@ public class TeamController {
         return "addTeam";
     }
     @PostMapping("/addTeam")//adds team to db
-    public String addTeam(@ModelAttribute("Team") Team newTeam) throws TeamException {
+    public String addTeam(@ModelAttribute("Team") Team newTeam) throws LeagueException {
         //save player to database
         teamService.addTeam(newTeam);
-        return "redirect:/Team";
+        return "redirect:/TeamId";
     }
 
 
-
     @GetMapping("/showFormForUpdate/{teamId}")//update team
-    public String showFormForUpdate(@PathVariable(value = "teamId") int teamId, Model model) throws TeamException {
+    public String showFormForUpdate(@PathVariable(value = "teamId") int teamId, Model model) throws LeagueException {
 
         Team team = teamService.getTeam(teamId);
 
@@ -61,7 +60,7 @@ public class TeamController {
         return "updateTeam";
     }
     @GetMapping("/deleteTeam/{teamId}")//delete team
-    public String deleteTeamByTeamId(@PathVariable(value = "teamId") int teamId) throws TeamException {
+    public String deleteTeamByTeamId(@PathVariable(value = "teamId") int teamId) throws LeagueException {
 
         // call delete employee method
         this.teamService.deleteTeamByTeamId(teamId);

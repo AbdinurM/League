@@ -1,4 +1,4 @@
-package com.BBall.League;
+package com.AbdinurMuse.League;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

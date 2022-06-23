@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.BBall.League.models;
-
-import org.springframework.security.access.method.P;
+package com.AbdinurMuse.League.models;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
  *
  * @author Nur
  */
 @Entity
-@Table(name = "Player")
+@Table(name = "Player")//table name
 public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +20,14 @@ public class Player {
 
 	@Column(name = "teamId")
 	private int teamId;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//@JoinTable(
+	//      name = "Team_Player",
+	//    joinColumns = @JoinColumn(
+	//          name = "teamid", referencedColumnName = "teamid"),
+	// inverseJoinColumns = @JoinColumn(
+	//       name = "name", referencedColumnName = "name"))
+	private Team team;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "age")
@@ -40,7 +45,7 @@ public class Player {
 	private Double APG;
 	@Column(name = "BPG")
 	private Double BPG;
-
+//creates columns
 
 
 
@@ -59,7 +64,7 @@ public Player(int playerId,int teamId,String name,int age,int jeserynumber,Strin
 	this.RPG = RPG;
 	this.APG = APG;
 	this.BPG = BPG;
-}
+}//asssigning var
 
 	public int getPlayerId() {
 		return playerId;
@@ -140,4 +145,13 @@ public Player(int playerId,int teamId,String name,int age,int jeserynumber,Strin
 	public void setBPG(Double BPG) {
 		this.BPG = BPG;
 	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	//setters and getters
 }

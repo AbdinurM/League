@@ -1,10 +1,9 @@
-package com.BBall.League.Service;
+package com.AbdinurMuse.League.Service;
 
 
-import com.BBall.League.Repository.PlayerRepository;
-import com.BBall.League.Repository.TeamException;
-import com.BBall.League.models.Player;
-import com.BBall.League.models.Team;
+import com.AbdinurMuse.League.Repository.PlayerRepository;
+import com.AbdinurMuse.League.Repository.LeagueException;
+import com.AbdinurMuse.League.models.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +16,17 @@ public class PlayerServiceImpl implements PlayerService {
    private PlayerRepository playerRepository;
 
     @Override
-    public void addPlayer(Player newPlayer) throws TeamException {
+    public void addPlayer(Player newPlayer) throws LeagueException {
        this.playerRepository.save(newPlayer);
     }
 
     @Override
-    public List<Player> getAllPlayer() throws TeamException {
+    public List<Player> getAllPlayer() throws LeagueException {
         return playerRepository.findAll();
     }
 
     @Override
-    public Player getPlayer(int playerId) throws TeamException {
+    public Player getPlayer(int playerId) throws LeagueException {
         Optional<Player> optional = playerRepository.findById(playerId);
         Player player = null;
         if (optional.isPresent()) {
@@ -40,14 +39,19 @@ public class PlayerServiceImpl implements PlayerService {
 
 
     @Override
-    public Player updatePlayer(Player updatePlayer) throws TeamException {
+    public Player updatePlayer(Player updatePlayer) throws LeagueException {
         return null;
     }
 
     @Override
-    public void deletePlayerByplayerId(int playerId) throws TeamException {
+    public void deletePlayerByplayerId(int playerId) throws LeagueException {
         this.playerRepository.deleteById(playerId);
     }
+
+  //  @Override
+ //   public List<Player> findbyteamid(int teamId) {
+   //     return playerRepository.findbyteamid(teamId);
+  //  }
 
 
 }

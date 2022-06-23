@@ -1,8 +1,7 @@
-package com.BBall.League.secuirty;
+package com.AbdinurMuse.League.secuirty;
 
-import com.BBall.League.Repository.UserRepository;
-import com.BBall.League.models.User;
-import com.BBall.League.secuirty.CustomUserDetails;
+import com.AbdinurMuse.League.Repository.UserRepository;
+import com.AbdinurMuse.League.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +21,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
         return new CustomUserDetails(user);
-    }
+    }//returns error if no user is found
 
 }

@@ -1,10 +1,9 @@
-package com.BBall.League.Controller;
+package com.AbdinurMuse.League.Controller;
 
-import com.BBall.League.Repository.TeamException;
-import com.BBall.League.Service.PlayerService;
+import com.AbdinurMuse.League.Repository.LeagueException;
+import com.AbdinurMuse.League.Service.PlayerService;
 
-import com.BBall.League.models.Player;
-import com.BBall.League.models.Team;
+import com.AbdinurMuse.League.models.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +18,19 @@ public class PlayerController {
     private PlayerService playerService;
 
     @GetMapping("/Player")//player
-    public String playerpage(Model model) throws TeamException {
+    public String playerpage(Model model) throws LeagueException {
         model.addAttribute("ListPlayer", playerService.getAllPlayer());
         return "Player";
     }
     @GetMapping("/Stats")//player stats and etc
-    public String playerstats(Model model) throws TeamException {
+    public String playerstats(Model model) throws LeagueException {
         model.addAttribute("ListPlayer", playerService.getAllPlayer());
         return "playerstats";
+    }
+    @GetMapping("/playerid")//player management page where you can update player or remove
+    public String playermanage(Model model) throws LeagueException {
+        model.addAttribute("ListPlayer", playerService.getAllPlayer());
+        return "playerid";
     }
     @GetMapping("/showNewPlayerForm")//add player form
     public String showNewPlayerForm(Model model) {
@@ -35,14 +39,14 @@ public class PlayerController {
         model.addAttribute("player", player);
         return "addPlayer";
     }
-    @PostMapping("/addPlayer")//adds player to form
-    public String AddPlayer(@ModelAttribute("player") Player newPlayer) throws TeamException {
+    @PostMapping("/addPlayer")//adds player to DB
+    public String AddPlayer(@ModelAttribute("player") Player newPlayer) throws LeagueException {
          //save player to database
         playerService.addPlayer(newPlayer);
-        return "redirect:/Player";
+        return "redirect:/playerid";
     }
-    @GetMapping("/showFormForPlayerUpdate/{playerId}")//update player
-    public String showFormForPlayerUpdate(@PathVariable(value = "playerid") int playerId, Model model) throws TeamException {
+    @GetMapping("/showFormForPlayerUpdate/{playerId}")//update player page
+    public String showFormForPlayerUpdate(@PathVariable(value = "playerId") int playerId, Model model) throws LeagueException {
 
         Player player = playerService.getPlayer(playerId);
 
@@ -50,10 +54,10 @@ public class PlayerController {
         return "updatePlayer";
     }
     @GetMapping("/deletePlayer/{playerId}")//delete player
-    public String deletePlayerByplayerId(@PathVariable(value = "playerId") int playerId) throws TeamException {
+    public String deletePlayerByplayerId(@PathVariable(value = "playerId") int playerId) throws LeagueException {
 
         // call delete employee method
         this.playerService.deletePlayerByplayerId(playerId);
-        return "redirect:/Player";
+        return "redirect:/playerid";
     }
 }

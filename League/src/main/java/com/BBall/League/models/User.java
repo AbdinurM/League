@@ -1,4 +1,4 @@
-package com.BBall.League.models;
+package com.AbdinurMuse.League.models;
 
 
 import javax.persistence.*;

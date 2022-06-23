@@ -1,6 +1,6 @@
-package com.BBall.League.secuirty;
+package com.AbdinurMuse.League.secuirty;
 
-import com.BBall.League.models.User;
+import com.AbdinurMuse.League.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

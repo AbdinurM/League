@@ -1,21 +1,18 @@
-package com.BBall.League.Controller;
+package com.AbdinurMuse.League.Controller;
 
-import com.BBall.League.Repository.UserRepository;
-import com.BBall.League.models.User;
+import com.AbdinurMuse.League.Repository.UserRepository;
+import com.AbdinurMuse.League.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 @Controller
-public class LoginController {
+public class UserController {
 
     @Autowired
     private UserRepository userRepository;
