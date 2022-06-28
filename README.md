@@ -34,8 +34,7 @@ This Application was created for the use of MYA basketball league and for it to 
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* https://github.com/AbdinurM/League
 
 ### Executing program
 Please download the application and then import it into to the ide you have downloaded. After you completed the first two steps you then have to click on src-->main-->resources-->application.properties and then make sure the database info is the correct info(change url/username and password if needed too)so the application can map it.
