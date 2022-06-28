@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+<!-- nav -->
 <nav class="navbar navbar-expand-lg bg-danger navbar-dark py-3 fixed-top">
     <div class="container">
         <a href="/Home" class="navbar-brand">MYA League Website</a>
@@ -28,10 +29,12 @@
                 </li>
                 <li class="nav-item">
                     <a href="Player" class="nav-link">Player</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
 
 <!-- Welcome part -->
 <section
@@ -42,18 +45,19 @@
             <div><br>
                 <h1><span class="text-light">Welcome To</span> <span class="text-danger"> MYA League Website </span></h1>
                 <p class="lead my-4">
-                    Minnesota Youth Assoicastion is a Non-Profit org that helps the youth withen our community,
-                    and what's the best way to get the youth invovle <span class="text-danger">SPORTS!</span>
+                    Minnesota Youth Association is a Non-Profit org that helps the youth within our community,
+                    and what's the best way to get the youth involve <span class="text-danger">SPORTS!</span>
 
                 </p>
-                <button
+                <a href="/showNewTeamForm" class="nav-link"> <button
                         class="btn btn-danger btn-lg"
                         data-bs-toggle="modal"
                         data-bs-target="#enroll"
                 >
-                    SIGN YOUR TEAM UP TODAY
+                    Register Your Team Here!!
                 </button>
-            </div>
+
+                </a></div>
             <img
                     class="img-fluid w-50 d-none d-sm-block"
                     src="img/showcase.svg"
@@ -67,13 +71,13 @@
 <section class="bg-dark text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-            <h3 class="mb-3 mb-md-0">Spots are limited so dont wait and miss out!</h3>
+            <h3 class="mb-3 mb-md-0">Spots are limited so don't wait and miss out!</h3>
 
 
         </div>
     </div>
 </section>
-
+<!--team mangement table-->
 <br><br><br><br><br><br><br>
 <div align="center">
     <h1>Team Admin Table</h1>
@@ -94,27 +98,40 @@
                class = "btn btn-primary">Update</a></td>
             <td>   <a th:href = "@{/deleteTeam/{teamId}(teamId=${Team.teamId})}"
                       class = "btn btn-primary">Remove</a></td>
+<br>
+
 
 
         </tr>
         </tbody>
     </table>
-</div>
+    <a href="/showNewPlayerForm" class="nav-link"> <button
+            class="btn btn-danger btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#enroll"
+    >
+        Player Register
+    </button></a></div>
 <br><br><br>
-<!-- Footer -->
 <!-- Footer -->
 <footer class="p-5 bg-danger text-white text-center position-relative">
     <div class="container">
-        <p class="lead">Sign up today!  MYA(Minnesota Youth Assoicastion)</p>
-        Hey <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-        <a href="#" class="position-absolute bottom-0 end-0 p-5">
-            <i class="bi bi-arrow-up-circle h1"></i>
-        </a>
+        <p class="lead">Sign up today!  MYA(Minnesota Youth Association)</p>
+        <div class="container text-center">
+            <div>
+                <form th:action="@{/logout}" method="post">
+                    <p>
+                        Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    </p>
+                    <input type="submit" value="Sign Out" />
+                </form>
+            </div>
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+        </div>
     </div>
 </footer>
 
-</body>
-</html>
-
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script></body>
 </html>

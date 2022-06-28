@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <title>Title</title>
+    <title>Team List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
@@ -28,10 +28,6 @@
                 </li>
                 <li class="nav-item">
                     <a href="Player" class="nav-link">Player</a>
-                </li>
-                <li class="nav-item">
-                    <a href="showNewTeamForm" class="nav-link">SignUp</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -46,17 +42,11 @@
             <div><br>
                 <h1><span class="text-light">Welcome To</span> <span class="text-danger"> MYA League Website </span></h1>
                 <p class="lead my-4">
-                    Minnesota Youth Assoicastion is a Non-Profit org that helps the youth withen our community,
-                    and what's the best way to get the youth invovle <span class="text-danger">SPORTS!</span>
+                    Minnesota Youth Association is a Non-Profit org that helps the youth within our community,
+                    and what's the best way to get the youth involve <span class="text-danger">SPORTS!</span>
 
                 </p>
-                <button
-                        class="btn btn-danger btn-lg"
-                        data-bs-toggle="modal"
-                        data-bs-target="#enroll"
-                >
-                    SIGN YOUR TEAM UP TODAY
-                </button>
+
             </div>
             <img
                     class="img-fluid w-50 d-none d-sm-block"
@@ -71,7 +61,7 @@
 <section class="bg-dark text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-            <h3 class="mb-3 mb-md-0">Spots are limited so dont wait and miss out!</h3>
+            <h3 class="mb-3 mb-md-0">Spots are limited so don't wait and miss out!</h3>
 
 
         </div>
@@ -79,6 +69,14 @@
 </section>
 
 <br><br><br><br><br>
+<!--Team List:-->
+<!--<select class="form-select form-select-sm" aria-label=".form-select-sm example">-->
+<!--    <option th:each="Team: ${ListTeam}"-->
+<!--            th:text="${Team.name}">-->
+
+<!--    </option>-->
+<!--</select>-->
+<!--team table -->
 <div align="center">
     <h1>Team List</h1>
     <table class="table table-sm table-dark">
@@ -86,13 +84,16 @@
             <tr>
                 <th>Team Name</th>
                 <th>Team Color</th>
+                <th>Team Player</th>
 
             </tr>
         </thread>
         <tbody>
         <tr th:each="Team : ${ListTeam}">
-            <td th:text="${Team.name}"></td>
+            <td th:text="${Team.name}"></td></a>
             <td th:text="${Team.color}"></td>
+            <td>  <a th:href = "@{/getplayerteam/{teamId}(teamId=${Team.teamId})}"
+                     class = "btn btn-primary">Team Player</a></td>
 
 
         </tr>
@@ -102,10 +103,9 @@
 <br><br><br>
 
 <!-- Footer -->
-<!-- Footer -->
 <footer class="p-5 bg-danger text-white text-center position-relative">
     <div class="container">
-        <p class="lead">Sign up today!  MYA(Minnesota Youth Assoicastion)</p>
+        <p class="lead">Sign up today!  MYA(Minnesota Youth Association)</p>
         <a href="#" class="position-absolute bottom-0 end-0 p-5">
             <i class="bi bi-arrow-up-circle h1"></i>
         </a>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Registration Success</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <title>Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
 </head>
 <body>
+
 <!-- nav -->
 <nav class="navbar navbar-expand-lg bg-danger navbar-dark py-3 fixed-top">
     <div class="container">
@@ -29,9 +31,12 @@
                     <a href="Player" class="nav-link">Player</a>
                 </li>
                 <li class="nav-item">
-                    <a href="login" class="nav-link">UpdateTeam</a>
+                    <a href="login" class="nav-link">Login</a>
                 </li>
-
+                </li>
+                <li class="nav-item">
+                    <a href="register" class="nav-link">Register</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -50,12 +55,12 @@
                     and what's the best way to get the youth invovle <span class="text-danger">SPORTS!</span>
 
                 </p>
-                <a href="/showNewTeamForm" class="nav-link"> <button
+                <a href="/register" class="nav-link"> <button
                         class="btn btn-danger btn-lg"
                         data-bs-toggle="modal"
                         data-bs-target="#enroll"
                 >
-                    Register Your Team Here!!
+                    Register Today!!
                 </button>
                 </a></div>
             <img
@@ -71,13 +76,14 @@
 <section class="bg-dark text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-            <h3 class="mb-3 mb-md-0">Spots are limited so dont wait and miss out!</h3>
+            <h3 class="mb-3 mb-md-0">Spots are limited so don't wait and miss out!</h3>
 
 
         </div>
     </div>
 </section>
 
+<!--notification of register-->
 <div class="container text-center">
     <h3>You have signed up successfully!</h3>
     <h4><a th:href="@{/login}">Click here to Login</a></h4>

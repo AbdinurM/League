@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+<!-- nav -->
 <nav class="navbar navbar-expand-lg bg-danger navbar-dark py-3 fixed-top">
     <div class="container">
         <a href="/Home" class="navbar-brand">MYA League Website</a>
@@ -27,9 +28,7 @@
                 <li class="nav-item">
                     <a href="Player" class="nav-link">Player</a>
                 </li>
-                <li class="nav-item">
-                    <a href="showNewTeamForm" class="nav-link">CreateTeam</a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -44,18 +43,18 @@
             <div><br>
                 <h1><span class="text-light">Welcome To</span> <span class="text-danger"> MYA League Website </span></h1>
                 <p class="lead my-4">
-                    Minnesota Youth Assoicastion is a Non-Profit org that helps the youth withen our community,
-                    and what's the best way to get the youth invovle <span class="text-danger">SPORTS!</span>
+                    Minnesota Youth Association is a Non-Profit org that helps the youth within our community,
+                    and what's the best way to get the youth involve <span class="text-danger">SPORTS!</span>
 
                 </p>
-                <button
+                <a href="/showNewTeamForm" class="nav-link"> <button
                         class="btn btn-danger btn-lg"
                         data-bs-toggle="modal"
                         data-bs-target="#enroll"
                 >
-                    SIGN YOUR TEAM UP TODAY
+                    Register Your Team Here!!
                 </button>
-            </div>
+                </a></div>
             <img
                     class="img-fluid w-50 d-none d-sm-block"
                     src="img/showcase.svg"
@@ -69,60 +68,66 @@
 <section class="bg-dark text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-            <h3 class="mb-3 mb-md-0">Spots are limited so dont wait and miss out!</h3>
+            <h3 class="mb-3 mb-md-0">Spots are limited so don't wait and miss out!</h3>
 
 
         </div>
     </div>
 </section>
-
+<!--player sign up form-->
 <div class="container">
 
-    <h1>Team Sign Up</h1>
+    <h1>Player Sign Up</h1>
     <hr>
-    <h2>Save Team</h2>
+    <h2>Save Player</h2>
 
     <form action="#" th:action="@{/addPlayer}" th:object="${player}" method="POST">
-        <input type="text" th:field="*{teamId}" placeholder="Team ID" class="form-control mb-4 col-4">
+        <input type="number" min="1" th:field="*{teamId}" placeholder="ID" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{name}" placeholder="Player Name" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{age}" placeholder="Player Age" class="form-control mb-4 col-4">
+        <input type="number" min="0" th:field="*{age}" placeholder="18" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{jeserynumber}" placeholder="Player jesery number" class="form-control mb-4 col-4">
+        <input type="number" min="0" th:field="*{jeserynumber}" placeholder="00" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{Position}" placeholder="Position" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{Position}" placeholder="PG/G/SF/PF/C" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{PPG}" placeholder="Points per game" class="form-control mb-4 col-4">
+        <input type="number" min="0" th:field="*{PPG}" placeholder="Pointspergame" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{RPG}" placeholder="Rebound per game" class="form-control mb-4 col-4">
+        <input type="number" min="0" th:field="*{RPG}" placeholder="Reboundpergame" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{APG}" placeholder="Assits per game" class="form-control mb-4 col-4">
+        <input type="number" min="0" th:field="*{APG}" placeholder="Assitspergame" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{BPG}" placeholder="Block per game" class="form-control mb-4 col-4">
+        <input type="number" min="0" th:field="*{BPG}" placeholder="Blockpergame" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2"> Save Player</button>
     </form>
 
     <hr>
-
+    <!--back to player list-->
     <a th:href="@{/Player}"> Back to Player List</a>
-</div>
+
 <br><br><br>
 
 <!-- Footer -->
-<!-- Footer -->
 <footer class="p-5 bg-danger text-white text-center position-relative">
     <div class="container">
-        <p class="lead">Sign up today!  MYA(Minnesota Youth Assoicastion)</p>
-        <a href="#" class="position-absolute bottom-0 end-0 p-5">
-            <i class="bi bi-arrow-up-circle h1"></i>
-        </a>
+        <p class="lead">Sign up today!  MYA(Minnesota Youth Association)</p>
+        <div class="container text-right">
+            <div>
+                <form th:action="@{/logout}" method="post">
+                    <p>
+                        Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    </p>
+                    <input type="submit" value="Sign Out" />
+                </form>
+            </div>
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+        </div>
     </div>
 </footer>
 
-</body>
-</html>
-</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script></body>
 </html>
