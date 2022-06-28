@@ -1,2 +1,2 @@
-# League
-League Application
+# Capstone:League
+League Application created by Abdinur Muse
