@@ -56,7 +56,7 @@ public class PlayerController {
     public String AddPlayer(@ModelAttribute("player") Player newPlayer) throws LeagueException {
          //save player to database
         playerService.addPlayer(newPlayer);
-        return "redirect:/playerid";
+        return "redirect:/Player";
     }
     @GetMapping("/showFormForPlayerUpdate/{playerId}")//update player page
     public String showFormForPlayerUpdate(@PathVariable(value = "playerId") int playerId, Model model) throws LeagueException {
