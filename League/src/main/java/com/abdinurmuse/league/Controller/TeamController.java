@@ -71,6 +71,6 @@ public class TeamController {
 
         // call delete employee method
         this.teamService.deleteTeamByTeamId(teamId);
-        return "redirect:/TeamId";
+        return "redirect:/Team";
     }
 }
