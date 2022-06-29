@@ -54,7 +54,7 @@ public class TeamController {
     public String addTeam(@ModelAttribute("Team") Team newTeam) throws LeagueException {
         //save player to database
         teamService.addTeam(newTeam);
-        return "redirect:/TeamId";
+        return "redirect:/Team";
     }
 
 
