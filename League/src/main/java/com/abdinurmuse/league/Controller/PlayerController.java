@@ -71,7 +71,7 @@ public class PlayerController {
 
         // call delete employee method
         this.playerService.deletePlayerByplayerId(playerId);
-        return "redirect:/playerid";
+        return "redirect:/Player";
     }
     @GetMapping("/getplayerteam/{teamId}")//get one team and its players
     public String getplayerteam(@PathVariable(value = "teamId") int teamId, Model model) throws LeagueException {
